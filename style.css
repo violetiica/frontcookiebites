@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header{
+    background-color:#e6c492;
+    padding: 1rem 2%;
+    height: 70px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    align-items: center;
+    justify-content: space-between;
+}
+
+header #logo {
+    margin-left: 5%;
+    float:left;
+    width:60px;
+    height:40px;
+}
+
+header .icons img{
+    float: right;
+    margin-right: 0.1%;
+    width: 40px;
+    height: 40px;
+}
+
+main {
+
+    background-color: rgb(255, 255, 255);
+    padding: 2rem;
+    margin:15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    max-width: 1200px;
+}
+
+body{
+  font-family: Pacifico, cursive;
+  background-color: var(--background);
+  color: rgb(109, 40, 12);
+  line-height: 1.7;
+  padding: 0;
+  margin: 15px;
+  width:auto;
+}
+
+
+.catalogo{
+  display: flex;
+  justify-content: space-around;
+}
+
+.catalogo img{
+  display:block;
+  margin:auto;
+  width: 120px;
+  height: 120px;
+}
+
+.catalogo h4{
+  font-family: "Hedvig Letters Sans", sans-serif;
+  text-align: center;
+}
+
+.catalogo p{
+  font-family: "Dongle", sans-serif;
+  text-align: right;
+  font-size: 30px;
+} 
+
+.catalogo #producto1,#producto2,#producto3,#producto4{
+  background-color: rgb(255, 255, 255);
+  padding: 15px;
+  height: 260px;
+  width: 190px;
+  border-radius: 12px;
+  border: 1px solid rgb(109, 40, 12);
+  margin: 20px;
+  cursor:pointer;
+  transition:150ms ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.catalogo #producto1:hover,#producto2:hover,#producto3:hover,#producto4:hover{
+  scale:1.4;
+}
+
+footer {
+  display:flex;
+  background-color: #e6c492;
+  color:#fff;
+  padding: 20px 3px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  height:20px;
+}
+
+
