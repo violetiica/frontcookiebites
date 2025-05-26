@@ -1,0 +1,56 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CookieBites</title>
+    <link rel="icon" href="img/galletitafavicon.ico" type="/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dongle&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="img/CookieBitesSinFondo.png" alt="Logo CookieBites" class="logo">
+        <div class="icons">
+            <img src="img/usuario.png" alt="Usuario" class="usuario">
+            <img src="img/carrito.png" alt="Carrito de Pedidos" class="carrito">
+        </div>
+    </header>
+
+    <button class="boton-volver" onclick="window.location.href='InterfazCliente.html'">Volver</button>
+
+    <main>
+        <h2>WELCOME TO Carrito</h2>
+    </main>
+
+    <footer>
+        <p>© CookieBites</p>
+    </footer>
+
+<!--<script>
+window.onload = function() {
+  if (localStorage.getItem('logueado') === 'true') {
+    document.getElementById('icono-usuario').style.display = 'inline';
+    document.getElementById('icono-perfil').style.display = 'none';
+  } else {
+    document.getElementById('icono-usuario').style.display = 'none';
+    document.getElementById('icono-perfil').style.display = 'inline';
+  }
+}
+</script>-->
+
+</body>
+
+<script>
+  // Selecciona el perfil de usuario
+  const usuario = document.querySelector('.usuario');
+  usuario.onclick = function() {
+    window.open('InterfazUsuario.html', '_blank');
+  }
+</script>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CookieBites</title>
+    <link rel="icon" href="img/galletitafavicon.ico" type="/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dongle&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="img/CookieBitesSinFondo.png" alt="Logo CookieBites" class="logo">
+        <div class="icons">
+            <img src="img/edit.png" alt="Crear cuenta" class="perfil-nuevo">
+            <img src="img/carrito.png" alt="Carrito de Pedidos" class="carrito">
+        </div>
+    </header>
+
+    <button class="boton-volver" onclick="window.location.href='interfazvisitante.html'">Volver</button>
+
+    
+    <form class="login-form" action="#" method="post" autocomplete="off">
+        <h2>¡Inicia Sesion!</h2>
+
+        <label for="usuarioCorreo">Nombre de usuario o correo:</label>
+        <input type="text" id="usuarioCorreo" name="usuarioCorreo" required>
+
+        <label for="contrasena">Contraseña (minimo 8 caracteres):</label>
+        <input type="password" id="contrasena" name="contrasena" required minlength="8">
+
+        <button type="submit">Enviar</button>
+
+        <div class="registro-link" style="text-align:center; margin-top:10px;">
+                ¿No tienes una cuenta?
+            <a href="InterfazLogIn.html" target="_blank" style="color:#b87b4b; text-decoration:underline; cursor:pointer;">
+                Registrate aquí
+            </a>
+        </div>
+    </form>
+
+    <footer>
+        <p>© CookieBites</p>
+    </footer>
+
+</body>
+
+<script>
+  // Selecciona el carrito
+  const carrito = document.querySelector('.carrito');
+  carrito.onclick = function() {
+    window.open('InterfazCarritoVisitante.html', '_blank');
+  }
+
+    // Validación de contraseñas y abrir InterfazCliente.html
+  const form = document.querySelector('.login-form');
+  const contrasena = document.getElementById('contrasena');
+  const confirmar = document.getElementById('confirmar');
+  const error = document.getElementById('error-contrasena');
+
+  form.addEventListener('submit', function(e) {
+    if (contrasena.value !== confirmar.value) {
+      error.style.display = 'block';
+      confirmar.focus();
+      e.preventDefault();
+    } else {
+      error.style.display = 'none';
+      e.preventDefault(); // Evita el envío real del formulario
+      localStorage.setItem('logueado', 'true');
+      window.open('InterfazCliente.html', '_blank');
+    }
+  });
+</script>
+
+  
+ 
+</html>

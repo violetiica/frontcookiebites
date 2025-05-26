@@ -16,7 +16,7 @@
     <header>
         <img id="logo" src="img/CookieBitesSinFondo.png" alt="Logo CookieBites" class="logo">
         <div class="icons">
-            <img src="img/edit.png" alt="Crear cuenta" class="perfil-nuevo">
+            <img src="img/usuario.png" alt="usuario" class="usuario">
             <img src="img/carrito.png" alt="Carrito de Pedidos" class="carrito">
         </div>
     </header>
@@ -60,15 +60,15 @@
   // Selecciona el carrito
   const carrito = document.querySelector('.carrito');
   carrito.onclick = function() {
-    window.open('InterfazCarritoVisitante.html', '_blank');
+    window.open('InterfazCarritoCliente.html', '_blank');
   }
 </script>
 
 <script>
   // Selecciona el perfil de usuario
-  const usuario = document.querySelector('.perfil-nuevo');
+  const usuario = document.querySelector('.usuario');
   usuario.onclick = function() {
-    window.open('InterfazRegistroVisitante.html', '_blank');
+    window.open('InterfazUsuario.html', '_blank');
   }
 </script>
 

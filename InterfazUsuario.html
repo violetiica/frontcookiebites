@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CookieBites</title>
+    <link rel="icon" href="img/galletitafavicon.ico" type="/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dongle&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="img/CookieBitesSinFondo.png" alt="Logo CookieBites" class="logo">
+        <div class="icons">
+            <img src="img/usuario.png" alt="usuario" class="usuario">
+            <img src="img/carrito.png" alt="Carrito de Pedidos" class="carrito">
+        </div>
+    </header>
+
+    <button class="boton-volver" onclick="window.location.href='InterfazCliente.html'">Volver</button>
+
+        <main>
+        <h2>PERFIL</h2> 
+        <div class="perfil">
+            <img src="img/usuario.png" alt="usuario" class="usuario-perfil">
+            <p><strong>Nombre:</strong> <span>Patricia Docasar</span></p>
+            <p><strong>Nombre de usuario:</strong> <span>Pattydocasar</span></p>
+            <p><strong>Correo</strong> <span>patricia@gmail.com</span></p>
+            <p><strong>Contraseña:</strong> <span class="ver-contrasena" data-real="miclave123">***************</span></p>
+        </div>   
+    </main>
+    
+    <footer>
+        <p>© CookieBites</p>
+    </footer>
+</body>
+
+<script>
+  // Selecciona el carrito
+  const carrito = document.querySelector('.carrito');
+  carrito.onclick = function() {
+    window.open('InterfazCarritoCliente.html', '_blank');
+  }
+</script>
+
+</html>

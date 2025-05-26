@@ -103,4 +103,146 @@ footer {
   height:20px;
 }
 
+.boton-volver{
+    background-color: #ADD8E6;
+    color: black;
+    padding: 12px 28px;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+    margin: 5px;
+    display: block;
+}
+
+.login-form {
+    background: #fff8f0;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    max-width: 350px;
+    margin: 40px auto 24px auto;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-family: 'Dongle', Arial, sans-serif;
+}
+
+.login-form h2 {
+    font-size: 2.5rem;
+    color: #a67c52;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px #e5d0b1, 0 1px 0 #fff;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 16px;
+    padding: 16px 0;
+    box-shadow: 0 2px 8px rgba(229, 208, 177, 0.15);
+}
+
+.login-form label {
+    font-size: 1.2rem;
+    color: #7c4a21;
+    margin-bottom: 2px;
+}
+
+.login-form input {
+    padding: 8px 10px;
+    border: 1px solid #e0c3a1;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #fff;
+    margin-bottom: 8px;
+    transition: border 0.2s;
+}
+
+.login-form input:focus {
+    border: 1.5px solid #b87b4b;
+    outline: none;
+}
+
+.login-form button[type="submit"] {
+    background: #b87b4b;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 0;
+    font-size: 1.2rem;
+    font-family: 'Dongle', Arial, sans-serif;
+    cursor: pointer;
+    margin-top: 10px;
+    ransition: background 0.2s;
+}
+
+.login-form button[type="submit"]:hover {
+    background: #a05e2a;
+}
+
+.perfil{
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 32px 24px;
+    background: #fff8ee;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(229, 208, 177, 0.25);
+    border: 5px solid #E5D0B1;
+}
+
+h2{
+    font-size: 2.5rem;
+    color: #a67c52;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px #e5d0b1, 0 1px 0 #fff;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 16px;
+    padding: 16px 0;
+    box-shadow: 0 2px 8px rgba(229, 208, 177, 0.15);
+}
+
+
+.perfil p {
+    margin: 18px 0;
+    font-size: 18px;
+    color: #4B2E05;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.perfil strong {
+    min-width: 140px;
+    font-weight: bold;
+    color: #a67c52;
+}
+
+.perfil span {
+    font-weight: normal;
+    color: #6d4c1c;
+    background: #f3e4d6;
+    padding: 4px 12px;
+    border-radius: 8px;
+}
+
+.usuario-perfil{
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: 0 auto 24px auto;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #f3e4d6;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
 
