@@ -24,33 +24,45 @@
     <button class="boton-volver" onclick="window.location.href='InterfazCliente.html'">Volver</button>
 
     <main>
-        <h2>WELCOME TO Carrito</h2>
+        <h2>Carrito</h2>
+        <div id="contenedor-carrito"></div>
     </main>
 
     <footer>
         <p>© CookieBites</p>
     </footer>
 
-<!--<script>
-window.onload = function() {
-  if (localStorage.getItem('logueado') === 'true') {
-    document.getElementById('icono-usuario').style.display = 'inline';
-    document.getElementById('icono-perfil').style.display = 'none';
-  } else {
-    document.getElementById('icono-usuario').style.display = 'none';
-    document.getElementById('icono-perfil').style.display = 'inline';
-  }
-}
-</script>-->
-
 </body>
 
 <script>
-  // Selecciona el perfil de usuario
-  const usuario = document.querySelector('.usuario');
-  usuario.onclick = function() {
-    window.open('InterfazUsuario.html', '_blank');
-  }
+  document.addEventListener('DOMContentLoaded', function() {
+    // Selecciona el perfil de usuario
+    const usuario = document.querySelector('.usuario');
+    if (usuario) {
+      usuario.onclick = function() {
+        window.open('InterfazUsuario.html', '_blank');
+      }
+    }
+
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const contenedor = document.getElementById('contenedor-carrito');
+
+    if (carrito.length === 0) {
+      contenedor.innerHTML = "<p>El carrito está vacío.</p>";
+      return;
+    }
+
+    carrito.forEach(producto => {
+      const item = document.createElement('div');
+      item.classList.add('item-carrito');
+      item.innerHTML = `
+        <img src="${producto.imagen}" alt="${producto.nombre}" width="60">
+        <span><strong>${producto.nombre}</strong></span>
+        <span class="precio-carrito">$${producto.precioUnitario.toFixed(2)}</span>
+      `;
+      contenedor.appendChild(item);
+    });
+  });
 </script>
 
 </html>

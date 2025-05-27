@@ -298,7 +298,7 @@ h2{
 .descprod p,ul>li {
     list-style: none;
     font-family: Arial, Helvetica, sans-serif;
- `` font-weight: 200;
+    font-weight: 200;
     color: #a67c52;
     text-align: left;
     margin: 0;
@@ -334,24 +334,124 @@ h2{
 
 .contenedor-boton {
   display: flex;
-  justify-content: flex-end;
-  margin:10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
 }
-
-.button1{
+.button1 {
   background-color: rgb(112, 184, 207);
-  width:180px;
-  height:60px;
-  margin-right:150px;;
-  color:white;
-  font-size:15px;
+  width: 180px;
+  height: 60px;
+  color: white;
+  font-size: 15px;
   padding: 10px 24px;
   border-radius: 25px;
   transition-duration: 0.4s;
+  margin-right: 0; /* Elimina el margen derecho para centrar */
 }
 
 .button1:hover{
   background-color: rgb(68, 155, 184);
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.24);
   scale:1.1;
+}
+
+/* Selector de cantidad */
+.contenedor-cantidad {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.contenedor-cantidad button {
+    background: #f3e2d0;
+    border: 1px solid #b87b4b;
+    color: #b87b4b;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+
+}
+
+.contenedor-cantidad button:hover {
+    background: #b87b4b;
+    color: #fff;
+}
+
+.contenedor-cantidad input[type="number"] {
+    width: 50px;
+    text-align: center;
+    font-size: 1.2em;
+    border: 1px solid #e0c3a1;
+    border-radius: 8px;
+    padding: 4px 0;
+    background: #fff8f0;
+    color: #7c4a21;
+}
+
+.button.button1 {
+    background-color: #ADD8E6;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 28px;
+    font-size: 1.2rem;
+    font-family: 'Dongle', Arial, sans-serif;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(33,150,243,0.08);
+    margin-left: 250%;
+}
+
+.agregar-producto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px dashed #2196f3;
+    background: #f0f8ff;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+.agregar-producto:hover {
+    box-shadow: 0 4px 16px rgba(33,150,243,0.15);
+    border-color: #1769aa;
+    background: #e3f2fd;
+}
+.icono-mas {
+    font-size: 3em;
+    color: #b87b4b;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+.item-carrito {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+main #contenedor-carrito {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff8f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    font-family: 'Dongle', Arial, sans-serif;
+}
+
+.precio-carrito {
+    font-weight: bold;
+    color: #b87b4b;
+    margin-left: auto;
 }

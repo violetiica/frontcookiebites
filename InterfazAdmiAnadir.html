@@ -16,7 +16,7 @@
   <header>
     <img id="logo" src="img/CookieBitesSinFondo.png" alt="Logo CookieBites" class="logo">
     <div class="icons">
-      <img src="img/edit.png" alt="Crear cuenta" class="perfil-nuevo">
+      <img src="img/usuario.png" alt="usuario" class="usuario">
       <img src="img/carrito.png" alt="Carrito de Pedidos" class="carrito">
     </div>
   </header>
@@ -36,11 +36,10 @@
   // Selecciona el carrito
   const carrito = document.querySelector('.carrito');
   carrito.onclick = function () {
-    window.open('InterfazCarritoVisitante.html', '_blank');
+    window.open('InterfazCarritoCliente.html', '_blank');
   }
-</script> 
 
-<script>
+
   let listaDePrueba = [
     {
       "nombre": "Galleta de Chocolate",
@@ -143,14 +142,36 @@
       listaCatalogo.appendChild(hijoActual);
       console.log("7");
     }
-  }
 
-  
+    // Tarjeta para añadir nueva galleta
+let tarjetaAgregar = document.createElement("div");
+tarjetaAgregar.classList.add("producto", "agregar-producto");
+
+let iconoMas = document.createElement("span");
+iconoMas.textContent = "+";
+iconoMas.classList.add("icono-mas"); // Para estilos extra si quieres
+
+let texto = document.createElement("h2");
+texto.textContent = "Agregar nueva galleta";
+texto.classList.add("nombre"); // Igual que los nombres de las otras tarjetas
+
+tarjetaAgregar.appendChild(iconoMas);
+tarjetaAgregar.appendChild(texto);
+
+// Acción al hacer clic (puedes cambiar la URL)
+tarjetaAgregar.onclick = function() {
+  window.open('InterfazAdmiNuevaGalleta.html', '_blank');
+};
+
+listaCatalogo.appendChild(tarjetaAgregar);
+
+    }
+
 
   // Selecciona el perfil de usuario
-  const usuario = document.querySelector('.perfil-nuevo');
+  const usuario = document.querySelector('.usuario');
   usuario.onclick = function () {
-    window.open('InterfazLogIn.html', '_blank');
+    window.open('InterfazUsuario.html', '_blank');
   }
   llenarListadoProductos(listaDePrueba);
   console.log("aaaa");
@@ -160,7 +181,7 @@
     producto.onclick = function() {
         let clickedProductData = listaDePrueba[index];
         sessionStorage.setItem('currentProduct', JSON.stringify(clickedProductData));
-        window.open('InterfazInfoProductoVisitante.html', '_blank');
+        window.open('InterfazInfoProductoCliente.html', '_blank');
     };
 });
 </script>

@@ -23,22 +23,32 @@
 
     <button class="boton-volver" onclick="window.location.href='interfazvisitante.html'">Volver</button>
 
-    
-    <form class="login-form" action="#" method="post" autocomplete="off">
-        <h2>¡Inicia Sesion!</h2>
 
-        <label for="usuarioCorreo">Nombre de usuario o correo:</label>
-        <input type="text" id="usuarioCorreo" name="usuarioCorreo" required>
+        <form class="login-form" action="#" method="post" autocomplete="off">
+        <h2>¡Registrate!</h2>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="usuario">Nombre de Usuario:</label>
+        <input type="text" id="usuario" name="usuario" required>
+
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" required>
 
         <label for="contrasena">Contraseña (minimo 8 caracteres):</label>
         <input type="password" id="contrasena" name="contrasena" required minlength="8">
 
+        <label for="confirmar">Confirmar Contraseña:</label>
+        <input type="password" id="confirmar" name="confirmar" required minlength="8">
+
+        <span id="error-contrasena" style="color: #b87b4b; font-size: 1rem; display: none;">Las contraseñas no coinciden.</span>
+
         <button type="submit">Enviar</button>
 
         <div class="registro-link" style="text-align:center; margin-top:10px;">
-                ¿No tienes una cuenta?
+                ¿Ya estás registrado?
             <a href="InterfazLogIn.html" target="_blank" style="color:#b87b4b; text-decoration:underline; cursor:pointer;">
-                Registrate aquí
+                Inicia sesión
             </a>
         </div>
     </form>
@@ -50,19 +60,12 @@
 </body>
 
 <script>
-  // Selecciona el carrito
-  const carrito = document.querySelector('.carrito');
-  carrito.onclick = function() {
-    window.open('InterfazCarritoVisitante.html', '_blank');
-  }
-
-    // Validación de contraseñas y abrir InterfazCliente.html
   const form = document.querySelector('.login-form');
   const contrasena = document.getElementById('contrasena');
   const confirmar = document.getElementById('confirmar');
   const error = document.getElementById('error-contrasena');
 
-  form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function(e) {
     if (contrasena.value !== confirmar.value) {
       error.style.display = 'block';
       confirmar.focus();
@@ -74,8 +77,13 @@
       window.open('InterfazCliente.html', '_blank');
     }
   });
-</script>
 
-  
+      // Selecciona el carrito
+  const carrito = document.querySelector('.carrito');
+  carrito.onclick = function() {
+  window.open('InterfazCarritoVisitante.html', '_blank');
+  }
+
+</script>  
  
 </html>
