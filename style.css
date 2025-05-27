@@ -50,30 +50,32 @@ body{
 }
 
 
-.catalogo{
-  display: flex;
+#catalogo{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   justify-content: space-around;
 }
 
-.catalogo img{
+#catalogo img, .producto img{
   display:block;
   margin:auto;
   width: 120px;
   height: 120px;
 }
 
-.catalogo h4{
+#catalogo h4, .producto .nombre{
   font-family: "Hedvig Letters Sans", sans-serif;
   text-align: center;
+  font-size: 1rem;
 }
 
-.catalogo p{
+#catalogo p, .producto .precio{
   font-family: "Dongle", sans-serif;
   text-align: right;
   font-size: 30px;
 } 
 
-.catalogo #producto1,#producto2,#producto3,#producto4{
+#catalogo #producto1,#producto2,#producto3,#producto4, .producto{
   background-color: rgb(255, 255, 255);
   padding: 15px;
   height: 260px;
@@ -86,7 +88,7 @@ body{
   box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
-.catalogo #producto1:hover,#producto2:hover,#producto3:hover,#producto4:hover{
+#catalogo #producto1:hover,#producto2:hover,#producto3:hover,#producto4:hover, #catalogo .producto:hover{
   scale:1.4;
 }
 
@@ -177,7 +179,7 @@ footer {
     font-family: 'Dongle', Arial, sans-serif;
     cursor: pointer;
     margin-top: 10px;
-    ransition: background 0.2s;
+    transition: background 0.2s;
 }
 
 .login-form button[type="submit"]:hover {
