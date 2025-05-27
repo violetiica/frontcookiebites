@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CookieBites</title>
+    <link rel="icon" href="img/galletitafavicon.ico" type="/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dongle&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="img/CookieBitesSinFondo.png" alt="Logo CookieBites" class="logo">
+        <div class="icons">
+            <img src="img/edit.png" alt="Crear cuenta" class="perfil-nuevo">
+            <img src="img/carrito.png" alt="Carrito de Pedidos" class="carrito">
+        </div>
+    </header>
+    <main>
+        <button class="boton-volver" onclick="window.location.href='interfazvisitante.html'">Volver</button>
+        <div class="infoproducto">
+            <div class="descprod" id="fotoproducto">
+                <img id="productImage" alt="foto de producto" />
+            </div>
+            <div class="descprod" id="nomproducto">
+                <h3>Nombre:</h3>
+                <p id="nombredelproducto"></p>
+            </div>
+            <div class="descprod" id="ingreproducto">
+                <h3>Ingredientes:</h3>
+                <ul id="ingredientesdelproducto"></ul>
+            </div>
+            <div class="descprod" id="precioproducto">
+                <h3>Precio:</h3>
+                <p id="preciodelproducto"></p>
+            </div>
+        </div>
+        <div class="contenedor-boton">
+            <button class="button button1"><strong>Agregar al carrito</strong></button>
+        </div>
+    </main>
+    <footer>
+        <p>© CookieBites</p>
+    </footer>
+</body>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const storedProductJSON = sessionStorage.getItem('currentProduct');
+
+        if (storedProductJSON) {
+            const product = JSON.parse(storedProductJSON);
+
+            const productNameElement = document.getElementById('nombredelproducto');
+            const productPriceElement = document.getElementById('preciodelproducto');
+            const productIngredientsList = document.getElementById('ingredientesdelproducto'); // Correct ID from HTML
+
+            const productImageElement = document.getElementById('productImage');
+
+            if (product.imagen) {
+                productImageElement.src = product.imagen;
+            } else {
+                productImageElement.src = "img/galletas/galletaslimon.jpg";
+            }
+            productImageElement.alt = product.nombre || "Imagen del Producto";
+
+            productNameElement.textContent = product.nombre;
+            productPriceElement.textContent = `${product.precio}$`;
+            productIngredientsList.innerHTML = '';
+            if (product.ingredientes && Array.isArray(product.ingredientes)) {
+                product.ingredientes.forEach(ingredient => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = ingredient;
+                    productIngredientsList.appendChild(listItem);
+                });
+            } else {
+                const listItem = document.createElement('li');
+                listItem.textContent = "No hay ingredientes listados.";
+                productIngredientsList.appendChild(listItem);
+            }
+            sessionStorage.removeItem('selectedProduct');
+
+        } else {
+            const productInfoContainer = document.getElementById('productInfoContainer');
+            if (productInfoContainer) {
+                productInfoContainer.innerHTML = "<p>No se pudo cargar la información del producto. Por favor, regrese al catálogo y seleccione un producto.</p>";
+            }
+            console.warn("No product data found in sessionStorage for InterfazInfoProducto.html.");
+        }
+    });
+
+    const usuario = document.querySelector('.perfil-nuevo');
+    usuario.onclick = function () {
+        window.open('InterfazRegistroVisitante.html', '_blank');
+    }
+    llenarListadoProductos(listaDePrueba);
+    console.log("aaaa");
+
+    const carrito = document.querySelector('.carrito');
+    carrito.onclick = function () {
+        window.open('InterfazCarritoVisitante.html', '_blank');
+    }
+</script>
+
+</html>

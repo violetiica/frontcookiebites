@@ -22,13 +22,15 @@
   </header>
   <main>
     <h1>Hoy quiero una...</h1>
-    <section id="catalogo">
-    </section>
+    <div id="catalogo">
+    </div>
   </main>
   <footer>
     <p>© CookieBites</p>
   </footer>
 </body>
+
+
 
 <script>
   // Selecciona el carrito
@@ -36,7 +38,7 @@
   carrito.onclick = function () {
     window.open('InterfazCarritoVisitante.html', '_blank');
   }
-</script>
+</script> 
 
 <script>
   let listaDePrueba = [
@@ -108,6 +110,9 @@
       "ingredientes": ["Harina", "Azúcar", "Mantequilla", "Café soluble"]
     }
   ]
+
+  
+    
   function llenarListadoProductos(listado) {
     let listaCatalogo = document.getElementById("catalogo");
     let hijoActual;
@@ -127,7 +132,7 @@
       nombre.textContent = producto.nombre;
       nombre.classList.add("nombre")
       precio = document.createElement("h3")
-      precio.textContent = producto.precio;
+      precio.textContent = "$" + producto.precio;
       nombre.classList.add("precio");
       console.log("5");
       hijoActual.appendChild(imagen);
@@ -137,12 +142,10 @@
       console.log(hijoActual);
       listaCatalogo.appendChild(hijoActual);
       console.log("7");
-
     }
   }
 
-
-
+  
 
   // Selecciona el perfil de usuario
   const usuario = document.querySelector('.perfil-nuevo');
@@ -151,6 +154,15 @@
   }
   llenarListadoProductos(listaDePrueba);
   console.log("aaaa");
+
+  let productos = document.querySelectorAll('.producto');
+  productos.forEach(function(producto,index) {
+    producto.onclick = function() {
+        let clickedProductData = listaDePrueba[index];
+        sessionStorage.setItem('currentProduct', JSON.stringify(clickedProductData));
+        window.open('InterfazInfoProducto.html', '_blank');
+    };
+});
 </script>
 
 </html>
