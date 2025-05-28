@@ -44,8 +44,6 @@
   let nombreUsuario = urlParams.get('id');
   let listaCatalogo = document.getElementById("catalogo");
 
-
-
   let listaDePrueba = [
     {
       "nombre": "Galleta de Chocolate",
@@ -138,7 +136,7 @@
       hijoActual.appendChild(precio);
       console.log(hijoActual);
       hijoActual.addEventListener("click", ()=> {
-         window.location.href = "InterfazCliente.html?id=" + producto.nombre;
+         window.location.href = "ConsultarProducto.html?id=" + producto.nombre;
       });
       listaCatalogo.appendChild(hijoActual);
     }
