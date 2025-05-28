@@ -21,7 +21,7 @@
         </div>
     </header>
 
-    <button class="boton-volver" onclick="window.location.href='InterfazCliente.html'">Volver</button>
+    <button id="boton-volver" onclick="window.location.href='InterfazCliente.html'">Volver</button>
 
         <main>
         <h2>PERFIL</h2> 
@@ -41,10 +41,10 @@
 
 <script>
   // Selecciona el carrito
-  const carrito = document.querySelector('.carrito');
-  carrito.onclick = function() {
-    window.open('InterfazCarritoCliente.html', '_blank');
-  }
+  let botonVolver = document.getElementById("boton-volver");
+    botonVolver.addEventListener(('click'), ()=>{
+      window.location.href = "ConsultarCatalogo.html?id=";
+    })
 </script>
 
 </html>
