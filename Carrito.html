@@ -21,7 +21,7 @@
         </div>
     </header>
 
-    <button class="boton-volver" onclick="window.location.href='InterfazCliente.html'">Volver</button>
+    <button id="boton-volver">Volver</button>
 
     <main>
         <h2>Carrito</h2>
@@ -40,10 +40,13 @@
     const usuario = document.querySelector('.usuario');
     if (usuario) {
       usuario.onclick = function() {
-        window.open('InterfazUsuario.html', '_blank');
+        window.location.href = "ConsultarPerfil.html?id=" + ""
       }
     }
-
+    let botonVolver = document.getElementById("boton-volver");
+    botonVolver.addEventListener(('click'), ()=>{
+      window.location.href = "ConsultarCatalogo.html?id=";
+    })
     let carrito = [{
       Producto:{
       "nombre": "Galleta con chispas",

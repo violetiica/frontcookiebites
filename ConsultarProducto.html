@@ -21,7 +21,7 @@
         </div>
     </header>
     <main>
-        <button class="boton-volver" onclick="window.location.href='InterfazCliente.html'">Volver</button>
+        <button id="boton-volver">Volver</button>
         <div class="infoproducto">
             <div class="descprod" id="fotoproducto">
                 <img id="productImage" alt="foto de producto" />
@@ -61,6 +61,10 @@
         const storedProductJSON = sessionStorage.getItem('currentProduct');
         let precioUnitario = NaN;
 
+        let botonVolver = document.getElementById("boton-volver");
+        botonVolver.addEventListener(('click'), ()=>{
+            window.location.href = "ConsultarCatalogo.html?id=";
+        })
         if (storedProductJSON) {
             const product = JSON.parse(storedProductJSON);
 
@@ -158,7 +162,7 @@
             carrito.push(productoCarrito);
             localStorage.setItem('carrito', JSON.stringify(carrito));
 
-            window.open('InterfazCarritoCliente.html', '_blank');
+            window.location.href = "Carrito.html?id=";
         });
 
         // Iconos de usuario y carrito
