@@ -40,7 +40,7 @@
     const usuario = document.querySelector('.usuario');
     if (usuario) {
       usuario.onclick = function() {
-        let url = ((tipoDeUsuario == "admin") || (tipoDeUsuario == "cliente")) ? "ConsultarPerfil.html?id=" + nombreUsuario : "LogIn.html";
+        let url = ((tipoDeUsuario == "admin") || (tipoDeUsuario == "cliente")) ? "ConsultarPerfil.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario : "LogIn.html";
         window.location.href = url;
       }
     }
@@ -50,7 +50,7 @@
     let nombreUsuario = urlParams.get('id');
     let botonVolver = document.getElementById("boton-volver");
     botonVolver.addEventListener(('click'), ()=>{
-      window.location.href = "ConsultarCatalogo.html?id=";
+      window.location.href = "ConsultarCatalogo.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario;
     })
     let carrito = [{
       Producto:{

@@ -67,7 +67,7 @@
 
         let botonVolver = document.getElementById("boton-volver");
         botonVolver.addEventListener(('click'), ()=>{
-            window.location.href = "ConsultarCatalogo.html?id=";
+            window.location.href = "ConsultarCatalogo.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario ;
         })
         if (storedProductJSON) {
             const product = JSON.parse(storedProductJSON);
@@ -167,21 +167,22 @@
             carrito.push(productoCarrito);
             localStorage.setItem('carrito', JSON.stringify(carrito));
 
-            window.location.href = "Carrito.html?id=";
+            window.location.href = "Carrito.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario ;
         });
 
         // Iconos de usuario y carrito
         const usuario = document.querySelector('.usuario');
         if (usuario) {
             usuario.onclick = function () {
-                window.open('InterfazUsuario.html', '_blank');
+                let url = ((tipoDeUsuario == "admin") || (tipoDeUsuario == "cliente")) ? "ConsultarPerfil.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario : "LogIn.html";
+                window.location.href = url;
             }
         }
 
         const carritoIcon = document.querySelector('.carrito');
         if (carritoIcon) {
             carritoIcon.onclick = function () {
-                window.open('InterfazCarritoCliente.html', '_blank');
+                window.location.href = "ConsultarCatalogo.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario;
             }
         }
     });

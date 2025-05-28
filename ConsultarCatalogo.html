@@ -36,7 +36,7 @@
   // Selecciona el carrito
   const carrito = document.querySelector('.carrito');
   carrito.onclick = function () {
-    window.location.href = "Carrito.html?id=" + "";
+    window.location.href = "Carrito.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario;
   }
 
   let urlParams = new URLSearchParams(window.location.search);
@@ -136,7 +136,7 @@
       hijoActual.appendChild(precio);
       console.log(hijoActual);
       hijoActual.addEventListener("click", () => {
-        window.location.href = "ConsultarProducto.html?id=" + producto.nombre;
+        window.location.href = "ConsultarProducto.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario + "&prod=" + producto.nombre;
       });
       listaCatalogo.appendChild(hijoActual);
     }
@@ -155,7 +155,7 @@
       texto.classList.add("nombre"); // Igual que los nombres de las otras tarjetas
       tarjetaAgregar.appendChild(iconoMas);
       tarjetaAgregar.appendChild(texto);
-      tarjetaAgregar.addEventListener(("click"), ()=> {window.location.href = "CrearProducto.html?id=" + "";})
+      tarjetaAgregar.addEventListener(("click"), ()=> {window.location.href = "CrearProducto.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario})
       listaCatalogo.appendChild(tarjetaAgregar);
     }
   }
@@ -170,7 +170,7 @@
   // Selecciona el perfil de usuario
   const usuario = document.querySelector('.usuario');
   usuario.onclick = function () {
-    let url = ((tipoDeUsuario == "admin") || (tipoDeUsuario == "cliente")) ? "ConsultarPerfil.html?id=" + nombreUsuario : "LogIn.html";
+    let url = ((tipoDeUsuario == "admin") || (tipoDeUsuario == "cliente")) ? "ConsultarPerfil.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario : "LogIn.html";
     window.location.href = url;
   }
 

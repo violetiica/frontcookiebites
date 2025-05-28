@@ -663,7 +663,7 @@ input:focus, select:focus, textarea:focus {
     margin-bottom: 6px;
 }
 
-.boton-siguiente {
+#boton-siguiente {
     background: #ADD8E6;
     color: black;
     border: none;
