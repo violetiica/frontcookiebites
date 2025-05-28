@@ -20,7 +20,7 @@
         </div>
     </header>
 
-    <button id="boton-volver" onclick="window.location.href='ConsultarCatalogo.html'">Volver</button>
+    <button id="boton-volver">Volver</button>
 
     <h2 class="titulo-formulario">Agregar Nueva Galleta</h2>
     <form id="form-nueva-galleta" enctype="multipart/form-data" class="form-galleta">
@@ -51,8 +51,14 @@
 </body>
 
     <script>
+        let urlParams = new URLSearchParams(window.location.search);
         let tipoDeUsuario = urlParams.get('perfil');
         let nombreUsuario = urlParams.get('id');
-        let urlParams = new URLSearchParams(window.location.search);
+        
+
+        let botonVolver = document.getElementById("boton-volver");
+        botonVolver.addEventListener(('click'), ()=>{
+            window.location.href = "ConsultarCatalogo.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario ;
+        })
     </script>
 </html>
