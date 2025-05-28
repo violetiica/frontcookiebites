@@ -40,7 +40,8 @@
     const usuario = document.querySelector('.usuario');
     if (usuario) {
       usuario.onclick = function() {
-        window.location.href = "ConsultarPerfil.html?id=" + ""
+        let url = ((tipoDeUsuario == "admin") || (tipoDeUsuario == "cliente")) ? "ConsultarPerfil.html?id=" + nombreUsuario : "LogIn.html";
+        window.location.href = url;
       }
     }
 
@@ -75,8 +76,12 @@
       contenedor.innerHTML = "<p>El carrito está vacío.</p>";
       return;
     }
-
-    carrito.forEach(producto => {
+    if ((tipoDeUsuario !== "cliente") || (nombreUsuario == "")){
+      let Advertencia = document.createElement("div");
+      Advertencia.textContent = "No esta loggeado como cliente, trate iniciar sesion como usuario";
+      contenedor.appendChild(Advertencia);
+    } else {
+      carrito.forEach(producto => {
       console.log("evento");
       const item = document.createElement('div');
       item.classList.add('item-carrito');
@@ -88,6 +93,8 @@
       `;
       contenedor.appendChild(item);
     });
+    }
+    
   });
 
   
