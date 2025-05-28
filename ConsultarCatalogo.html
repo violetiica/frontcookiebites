@@ -172,7 +172,8 @@
   // Selecciona el perfil de usuario
   const usuario = document.querySelector('.usuario');
   usuario.onclick = function () {
-    window.location.href = "InterfazUsuario.html.html?id=" +"";
+    let url = ((tipoDeUsuario == "admin") || (tipoDeUsuario == "cliente"))? "ConsultarPerfil.html?id=" + nombreUsuario: "InterfazRegistrarVisitante.html";
+    window.location.href = url;
   }
 
 
