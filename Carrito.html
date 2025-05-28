@@ -21,7 +21,7 @@
         </div>
     </header>
 
-    <button class="boton-volver" onclick="window.location.href='InterfazCliente.html'">Volver</button>
+    <button id="boton-volver">Volver</button>
 
     <main>
         <h2>Carrito</h2>
@@ -40,11 +40,31 @@
     const usuario = document.querySelector('.usuario');
     if (usuario) {
       usuario.onclick = function() {
-        window.open('InterfazUsuario.html', '_blank');
+        window.location.href = "ConsultarPerfil.html?id=" + ""
       }
     }
-
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let botonVolver = document.getElementById("boton-volver");
+    botonVolver.addEventListener(('click'), ()=>{
+      window.location.href = "ConsultarCatalogo.html?id=";
+    })
+    let carrito = [{
+      Producto:{
+      "nombre": "Galleta con chispas",
+      "precio": 2.0,
+      "ingredientes": ["chispas", "Harina", "Azúcar", "Mantequilla"]
+      },
+      cant: 99,
+      total: 198
+      },
+      {
+      Producto:{
+      "nombre": "Galleta de Chocolarte",
+      "precio": 1.0,
+      "ingredientes": ["Cacao", "Harina", "Azúcar", "Mantequilla"]
+      },
+      cant: 99,
+      total: 99
+      }];
     const contenedor = document.getElementById('contenedor-carrito');
 
     if (carrito.length === 0) {
@@ -53,12 +73,14 @@
     }
 
     carrito.forEach(producto => {
+      console.log("evento");
       const item = document.createElement('div');
       item.classList.add('item-carrito');
       item.innerHTML = `
-        <img src="${producto.imagen}" alt="${producto.nombre}" width="60">
-        <span><strong>${producto.nombre}</strong></span>
-        <span class="precio-carrito">$${producto.precioUnitario.toFixed(2)}</span>
+        <img src="" alt="${producto.Producto.nombre}" width="60">
+        <span><strong>${producto.Producto.nombre}</strong></span>
+        <span class="precio-carrito">${producto.cant} unid</span>
+        <span class="precio-carrito">$${producto.total}</span>
       `;
       contenedor.appendChild(item);
     });
