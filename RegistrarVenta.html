@@ -125,6 +125,11 @@
 
     <script>
         // Validación de celular y referencia
+
+        let tipoDeUsuario = urlParams.get('perfil');
+        let nombreUsuario = urlParams.get('id');
+        let urlParams = new URLSearchParams(window.location.search);
+        
         document.getElementById('form-pago').addEventListener('submit', function(e) {
             let valido = true;
             const celular = document.getElementById('celular').value;

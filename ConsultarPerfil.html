@@ -21,7 +21,7 @@
         </div>
     </header>
 
-    <button id="boton-volver" onclick="window.location.href='InterfazCliente.html'">Volver</button>
+    <button id="boton-volver" onclick="window.location.href='ConsultarCatalogo.html'">Volver</button>
 
     <main>
         <h2>PERFIL</h2>
@@ -43,6 +43,9 @@
 <script>
     const user = JSON.parse(sessionStorage.getItem('currentuser'));
 
+    let urlParams = new URLSearchParams(window.location.search);
+    let tipoDeUsuario = urlParams.get('perfil');
+    let nombreUsuario = urlParams.get('id');
     localStorage.clear();
     localStorage.removeItem('currentuser');
 
