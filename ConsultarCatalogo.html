@@ -113,7 +113,7 @@
       "ingredientes": ["Harina", "Azúcar", "Mantequilla", "Café soluble"]
     }
   ]
- 
+
   function llenarListadoProductos(listado) {
     let hijoActual;
     let nombre;
@@ -135,59 +135,56 @@
       hijoActual.appendChild(nombre);
       hijoActual.appendChild(precio);
       console.log(hijoActual);
-      hijoActual.addEventListener("click", ()=> {
-         window.location.href = "ConsultarProducto.html?id=" + producto.nombre;
+      hijoActual.addEventListener("click", () => {
+        window.location.href = "ConsultarProducto.html?id=" + producto.nombre;
       });
       listaCatalogo.appendChild(hijoActual);
     }
+  }
+
+  function agregarBotonAgregar() {
+    if (tipoDeUsuario == "admin") {
+      console.log("ejecutado");
+      let tarjetaAgregar = document.createElement("div");
+      tarjetaAgregar.classList.add("producto", "agregar-producto");
+      let iconoMas = document.createElement("span");
+      iconoMas.textContent = "+";
+      iconoMas.classList.add("icono-mas"); // Para estilos extra si quieres
+      let texto = document.createElement("h2");
+      texto.textContent = "Agregar nueva galleta";
+      texto.classList.add("nombre"); // Igual que los nombres de las otras tarjetas
+      tarjetaAgregar.appendChild(iconoMas);
+      tarjetaAgregar.appendChild(texto);
+      listaCatalogo.appendChild(tarjetaAgregar);
     }
+  }
 
-  function agregarBotonAgregar(){
-      if (tipoDeUsuario == "admin"){
-        console.log("ejecutado");
-        let tarjetaAgregar = document.createElement("div");
-        tarjetaAgregar.classList.add("producto", "agregar-producto");
-        let iconoMas = document.createElement("span");
-        iconoMas.textContent = "+";
-        iconoMas.classList.add("icono-mas"); // Para estilos extra si quieres
-        let texto = document.createElement("h2");
-        texto.textContent = "Agregar nueva galleta";
-        texto.classList.add("nombre"); // Igual que los nombres de las otras tarjetas
-        tarjetaAgregar.appendChild(iconoMas);
-        tarjetaAgregar.appendChild(texto);
-        listaCatalogo.appendChild(tarjetaAgregar);
-      }
+    // Acción al hacer clic (puedes cambiar la URL)
+    // tarjetaAgregar.onclick = function() {
+    //   window.open('InterfazAdmiNuevaGalleta.html', '_blank');
+    // };
 
-
-// Acción al hacer clic (puedes cambiar la URL)
-// tarjetaAgregar.onclick = function() {
-//   window.open('InterfazAdmiNuevaGalleta.html', '_blank');
-// };
-
-// listaCatalogo.appendChild(tarjetaAgregar);
-
-    }
-
+    // listaCatalogo.appendChild(tarjetaAgregar);
 
   // Selecciona el perfil de usuario
   const usuario = document.querySelector('.usuario');
   usuario.onclick = function () {
-    let url = ((tipoDeUsuario == "admin") || (tipoDeUsuario == "cliente"))? "ConsultarPerfil.html?id=" + nombreUsuario: "InterfazRegistrarVisitante.html";
+    let url = ((tipoDeUsuario == "admin") || (tipoDeUsuario == "cliente")) ? "ConsultarPerfil.html?id=" + nombreUsuario : "InterfazRegistrarVisitante.html";
     window.location.href = url;
   }
 
 
   let productos = document.querySelectorAll('.producto');
-  productos.forEach(function(producto,index) {
-    producto.onclick = function() {
-        let clickedProductData = listaDePrueba[index];
-        sessionStorage.setItem('currentProduct', JSON.stringify(clickedProductData));
-        window.open('InterfazInfoProductoCliente.html', '_blank');
+  productos.forEach(function (producto, index) {
+    producto.onclick = function () {
+      let clickedProductData = listaDePrueba[index];
+      sessionStorage.setItem('currentProduct', JSON.stringify(clickedProductData));
+      window.open('ConsultarProducto.html', '_blank');
     };
-});
+  });
 
-llenarListadoProductos(listaDePrueba);
-agregarBotonAgregar();
+  llenarListadoProductos(listaDePrueba);
+  agregarBotonAgregar();
 </script>
 
 </html>

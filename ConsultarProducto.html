@@ -78,6 +78,7 @@
 
             productNameElement.textContent = product.nombre;
             precioUnitario = parseFloat(product.precio);
+            productPriceElement.textContent = `${precioUnitario}$`;
 
             // Solo muestra el precio si es válido
             productPriceElement.textContent = (!isNaN(precioUnitario) && precioUnitario > 0) ? `${precioUnitario}$` : "";

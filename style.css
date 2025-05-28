@@ -128,7 +128,7 @@ footer {
     display: block;
 }
 
-.login-form {
+#login-form {
     background: #fff8f0;
     border-radius: 16px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
@@ -141,7 +141,7 @@ footer {
     font-family: 'Dongle', Arial, sans-serif;
 }
 
-.login-form h2 {
+#login-form h2 {
     font-size: 2.5rem;
     color: #a67c52;
     text-align: center;
@@ -157,13 +157,13 @@ footer {
     box-shadow: 0 2px 8px rgba(229, 208, 177, 0.15);
 }
 
-.login-form label {
+#login-form label {
     font-size: 1.2rem;
     color: #7c4a21;
     margin-bottom: 2px;
 }
 
-.login-form input {
+#login-form input {
     padding: 8px 10px;
     border: 1px solid #e0c3a1;
     border-radius: 8px;
@@ -173,12 +173,12 @@ footer {
     transition: border 0.2s;
 }
 
-.login-form input:focus {
+#login-form input:focus {
     border: 1.5px solid #b87b4b;
     outline: none;
 }
 
-.login-form button[type="submit"] {
+#login-form button[type="submit"] {
     background: #b87b4b;
     color: #fff;
     border: none;
@@ -191,7 +191,7 @@ footer {
     transition: background 0.2s;
 }
 
-.login-form button[type="submit"]:hover {
+login-form button[type="submit"]:hover {
     background: #a05e2a;
 }
 
@@ -255,6 +255,16 @@ h2{
     object-fit: cover;
     background: #f3e4d6;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.ver-contrasena {
+  letter-spacing: 2px;
+  cursor: pointer;
+  user-select: none;
+  background: #f3e4d6;
+  padding: 4px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
 }
 
 .infoproducto {
