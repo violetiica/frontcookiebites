@@ -155,6 +155,7 @@
       texto.classList.add("nombre"); // Igual que los nombres de las otras tarjetas
       tarjetaAgregar.appendChild(iconoMas);
       tarjetaAgregar.appendChild(texto);
+      tarjetaAgregar.addEventListener(("click"), ()=> {window.location.href = "CrearProducto.html?id=" + "";})
       listaCatalogo.appendChild(tarjetaAgregar);
     }
   }
@@ -169,7 +170,7 @@
   // Selecciona el perfil de usuario
   const usuario = document.querySelector('.usuario');
   usuario.onclick = function () {
-    let url = ((tipoDeUsuario == "admin") || (tipoDeUsuario == "cliente")) ? "ConsultarPerfil.html?id=" + nombreUsuario : "InterfazRegistrarVisitante.html";
+    let url = ((tipoDeUsuario == "admin") || (tipoDeUsuario == "cliente")) ? "ConsultarPerfil.html?id=" + nombreUsuario : "LogIn.html";
     window.location.href = url;
   }
 
