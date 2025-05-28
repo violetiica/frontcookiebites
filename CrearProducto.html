@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CookieBites</title>
+    <link rel="icon" href="img/galletitafavicon.ico" type="/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dongle&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <img id="logo" src="img/CookieBitesSinFondo.png" alt="Logo CookieBites" class="logo">
+        <div class="icons">
+            <img src="img/usuario.png" alt="Crear cuenta" class="usuario">
+            <img src="img/carrito.png" alt="Carrito de Pedidos" class="carrito">
+        </div>
+    </header>
+
+    <button class="boton-volver" onclick="window.location.href='interfazvisitante.html'">Volver</button>
+
+    <h2 class="titulo-formulario">Agregar Nueva Galleta</h2>
+    <form id="form-nueva-galleta" enctype="multipart/form-data" class="form-galleta">
+    <div class="campo-form">
+        <label for="nombre">Nombre de la galleta:</label>
+        <input type="text" id="nombre" name="nombre" required>
+    </div>
+    <div class="campo-form">
+        <label for="ingredientes">Ingredientes<br><span class="sub-label">(separados por coma)</span>:</label>
+        <input type="text" id="ingredientes" name="ingredientes" required>
+    </div>
+    <div class="campo-form">
+        <label for="precio">Precio ($):</label>
+        <input type="number" id="precio" name="precio" step="0.01" min="0" required>
+    </div>
+    <div class="campo-form">
+        <label for="imagen">Imagen:</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*" required>
+    </div>
+    <button type="submit" class="boton-agregar">Agregar Producto</button>
+  </form>
+
+
+    <footer>
+        <p>© CookieBites</p>
+    </footer>
+
+</body>
+</html>
