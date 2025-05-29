@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&display=swap" rel="stylesheet">
 </head>
 
+<body>
     <header>
         <img id="logo" src="img/CookieBitesSinFondo.png" alt="Logo CookieBites" class="logo">
         <div class="icons">
@@ -19,8 +20,8 @@
             <img src="img/carrito.png" alt="Carrito de Pedidos" class="carrito">
         </div>
     </header>
-    <button class="boton-volver" onclick="window.location.href='interfazvisitante.html'">Volver</button>
-<body>
+    <button class="boton-volver" onclick="window.location.href='Carrito.html'">Volver</button>
+
     <div class="venta-container">
         <!-- Panel Izquierdo -->
         <div class="panel-izq">
@@ -32,10 +33,6 @@
                 <div class="campo-form">
                     <label for="fecha">Fecha de entrega:</label>
                     <input type="date" id="fecha" name="fecha" required>
-                </div>
-                <div class="campo-form">
-                    <label for="direccion">Dirección de entrega:</label>
-                    <textarea id="direccion" name="direccion" rows="3" placeholder="Dirección completa" required></textarea>
                 </div>
             </form>
         </div>
@@ -64,23 +61,41 @@
             </div>
         </div>
     </div>
-      <div style="text-align: right; margin-top: 24px;">
-        <button type="button" id="boton-siguiente">Siguiente</button>
+
+    <!-- Dirección de envío a lo largo de la página -->
+    <div class="direccion-envio direccion-envio-full">
+        <h2>Dirección de envío</h2>
+        <h3>IMPORTANTE: solo hay envíos a Caracas-Venezuela.</h3>
+        <div class="campo-form">
+            <label for="zona">Zona de Caracas:</label>
+            <select id="zona" name="zona" required>
+                <option value="">Seleccione una zona</option>
+                <option value="Chacao">Chacao</option>
+                <option value="Baruta">Baruta</option>
+                <option value="El Hatillo">El Hatillo</option>
+                <option value="Sucre">Sucre</option>
+                <option value="Libertador">Libertador</option>
+                <option value="La Candelaria">La Candelaria</option>
+                <option value="San Bernardino">San Bernardino</option>
+                <option value="La Castellana">La Castellana</option>
+                <option value="Altamira">Altamira</option>
+                <option value="Las Mercedes">Las Mercedes</option>
+                <option value="Los Palos Grandes">Los Palos Grandes</option>
+                <option value="La Florida">La Florida</option>
+                <option value="Otra">Otra</option>
+            </select>
+        </div>
+        <div class="campo-form">
+            <label for="detalles">Información detallada:</label>
+            <textarea id="detalles" name="detalles" rows="3" placeholder="Apartamento, piso, punto de referencia, etc." required></textarea>
+        </div>
+        <div style="text-align: right; margin-top: 24px;">
+            <button type="button" class="boton-siguiente">Siguiente</button>
+        </div>
     </div>
+
     <footer>
         <p>© CookieBites</p>
     </footer>
-</body> 
-
-    <script>
-        let tipoDeUsuario = urlParams.get('perfil');
-        let nombreUsuario = urlParams.get('id');
-        let urlParams = new URLSearchParams(window.location.search);
-
-        document.getElementById("boton-siguiente").addEventListener(('click'), () => {
-            
-        } )
-
-
-    </script>
+</body>
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>CookieBites</title>
@@ -10,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
     <header>
         <img id="logo" src="img/CookieBitesSinFondo.png" alt="Logo CookieBites" class="logo">
@@ -18,9 +20,8 @@
             <img src="img/carrito.png" alt="Carrito de Pedidos" class="carrito">
         </div>
     </header>
-
-    <button id="boton-volver" onclick="window.location.href='carrito.html'">Volver</button>
-
+    <button class="boton-volver" onclick="window.location.href='carrito.html'">Volver</button>
+    
     <div class="venta-container">
         <!-- Panel Izquierdo -->
         <div class="panel-izq">
@@ -40,7 +41,7 @@
                 </div>
             </div>
             <div class="pago-box">
-                <strong>Pago Móvil CookieBites</strong><br>
+                <h3>Pago Móvil CookieBites</h3><br>
                 Bancamiga<br>
                 9.765.382<br>
                 04245672965
@@ -72,7 +73,8 @@
                 </div>
                 <div class="campo-form">
                     <label for="celular">Celular de origen:</label>
-                    <input type="tel" id="celular" name="celular" pattern="[0-9]{11}" maxlength="11" required placeholder="Ej: 04121234567">
+                    <input type="tel" id="celular" name="celular" pattern="[0-9]{11}" maxlength="11" required
+                        placeholder="Ej: 04121234567">
                     <div class="error" id="error-celular"></div>
                 </div>
                 <div class="campo-form">
@@ -81,74 +83,53 @@
                 </div>
                 <div class="campo-form">
                     <label for="referencia">Número de referencia:</label>
-                    <input type="text" id="referencia" name="referencia" pattern="[0-9]{8}" maxlength="8" required placeholder="8 dígitos">
+                    <input type="text" id="referencia" name="referencia" pattern="[0-9]{8}" maxlength="8" required
+                        placeholder="8 dígitos">
                     <div class="error" id="error-referencia"></div>
                 </div>
                 <button type="submit" class="boton-enviar">Registrar Pago</button>
             </form>
-            <div class="direccion-envio">
-                <h2>Dirección de envío</h2>
-                <h3>IMPORTANTE: solo hay envíos a Caracas-Venezuela.</h3>
-                <div class="campo-form">
-                    <label for="zona">Zona de Caracas:</label>
-                    <select id="zona" name="zona" required>
-                        <option value="">Seleccione una zona</option>
-                        <option value="Chacao">Chacao</option>
-                        <option value="Baruta">Baruta</option>
-                        <option value="El Hatillo">El Hatillo</option>
-                        <option value="Sucre">Sucre</option>
-                        <option value="Libertador">Libertador</option>
-                        <option value="La Candelaria">La Candelaria</option>
-                        <option value="San Bernardino">San Bernardino</option>
-                        <option value="La Castellana">La Castellana</option>
-                        <option value="Altamira">Altamira</option>
-                        <option value="Las Mercedes">Las Mercedes</option>
-                        <option value="Los Palos Grandes">Los Palos Grandes</option>
-                        <option value="La Florida">La Florida</option>
-                        <option value="Otra">Otra</option>
-                    </select>
-                </div>
-                <div class="campo-form">
-                    <label for="detalles">Información detallada:</label>
-                    <textarea id="detalles" name="detalles" rows="3" placeholder="Apartamento, piso, punto de referencia, etc." required></textarea>
-                </div>
-            </div>
         </div>
-    </div>
-    <div style="text-align: right; margin-top: 24px;">
-       <button type="button" class="boton-siguiente">Siguiente</button>
     </div>
 
     <footer>
         <p>© CookieBites</p>
     </footer>
-
-    <script>
-        // Validación de celular y referencia
-
-        let tipoDeUsuario = urlParams.get('perfil');
-        let nombreUsuario = urlParams.get('id');
-        let urlParams = new URLSearchParams(window.location.search);
-        
-        document.getElementById('form-pago').addEventListener('submit', function(e) {
-            let valido = true;
-            const celular = document.getElementById('celular').value;
-            const referencia = document.getElementById('referencia').value;
-            const errorCel = document.getElementById('error-celular');
-            const errorRef = document.getElementById('error-referencia');
-            errorCel.textContent = "";
-            errorRef.textContent = "";
-
-            if (!/^\d{11}$/.test(celular)) {
-                errorCel.textContent = "El número debe tener exactamente 11 dígitos.";
-                valido = false;
-            }
-            if (!/^\d{8}$/.test(referencia)) {
-                errorRef.textContent = "La referencia debe tener exactamente 8 dígitos.";
-                valido = false;
-            }
-            if (!valido) e.preventDefault();
-        });
-    </script>
 </body>
+
+<script>
+    document.getElementById('form-pago').addEventListener('submit', function (e) {
+        e.preventDefault();
+        let valido = true;
+        const titular = document.getElementById('titular').value;
+        const banco = document.getElementById('banco').value;
+        const celular = document.getElementById('celular').value;
+        const cedula = document.getElementById('cedula').value;
+        const referencia = document.getElementById('referencia').value;
+        const errorCel = document.getElementById('error-celular');
+        const errorRef = document.getElementById('error-referencia');
+        errorCel.textContent = "";
+        errorRef.textContent = "";
+
+        if (!titular || !banco || !celular || !cedula || !referencia) {
+            alert("Por favor, complete todos los campos.");
+            valido = false;
+        }
+
+        if (!/^\d{11}$/.test(celular)) {
+            errorCel.textContent = "El número debe tener exactamente 11 dígitos.";
+            valido = false;
+        }
+        if (!/^\d{8}$/.test(referencia)) {
+            errorRef.textContent = "La referencia debe tener exactamente 8 dígitos.";
+            valido = false;
+        }
+
+        if (valido) {
+            alert('¡Hemos registrado tu pago!');
+            window.location.href = 'GenerarFactura.html';
+        }
+    });
+</script>
+
 </html>
