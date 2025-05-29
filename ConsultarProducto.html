@@ -58,15 +58,22 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const storedProductJSON = sessionStorage.getItem('currentProduct');
+        let urlParams = new URLSearchParams(window.location.search);
+        let tipoDeUsuario = urlParams.get('perfil');
+        let nombreUsuario = urlParams.get('id');
+        let nombreProducto = urlParams.get('prod');
+        // const storedProductJSON = sessionStorage.getItem('currentProduct');
         let precioUnitario = NaN;
 
+        document.querySelector(".usuario").src = ((tipoDeUsuario =="cliente")||(tipoDeUsuario =="admin"))?  "img/usuario.png":"img/edit.png";
         let botonVolver = document.getElementById("boton-volver");
         botonVolver.addEventListener(('click'), ()=>{
-            window.location.href = "ConsultarCatalogo.html?id=";
+            window.location.href = "ConsultarCatalogo.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario ;
         })
-        if (storedProductJSON) {
-            const product = JSON.parse(storedProductJSON);
+
+        function insertarDatos(storedProductJSON){
+            if (storedProductJSON) {
+            const product = storedProductJSON;
 
             const productNameElement = document.getElementById('nombredelproducto');
             const productPriceElement = document.getElementById('preciodelproducto');
@@ -99,13 +106,25 @@
                 listItem.textContent = "No hay ingredientes listados.";
                 productIngredientsList.appendChild(listItem);
             }
-            sessionStorage.removeItem('selectedProduct');
+            // sessionStorage.removeItem('selectedProduct');
         } else {
             const productInfoContainer = document.getElementById('productInfoContainer');
             if (productInfoContainer) {
                 productInfoContainer.innerHTML = "<p>No se pudo cargar la información del producto. Por favor, regrese al catálogo y seleccione un producto.</p>";
             }
             console.warn("No product data found in sessionStorage for InterfazInfoProducto.html.");
+        }
+        }
+        
+
+        async function buscarProducto(){
+            console.log("Busando...");
+            let aux;
+            // console.log('http://localhost:8080/productos/' + decodeURIComponent(nombreProducto));
+            fetch('http://localhost:8080/productos/buscar/' + nombreProducto).then((response) => response.json())
+            .then((json) => insertarDatos(json));
+
+            //return JSON.parse(pediod);
         }
 
         // Selector de cantidad y actualización de precio
@@ -163,23 +182,25 @@
             carrito.push(productoCarrito);
             localStorage.setItem('carrito', JSON.stringify(carrito));
 
-            window.location.href = "Carrito.html?id=";
+            window.location.href = "Carrito.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario ;
         });
 
         // Iconos de usuario y carrito
         const usuario = document.querySelector('.usuario');
         if (usuario) {
             usuario.onclick = function () {
-                window.open('InterfazUsuario.html', '_blank');
+                let url = ((tipoDeUsuario == "admin") || (tipoDeUsuario == "cliente")) ? "ConsultarPerfil.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario : "LogIn.html";
+                window.location.href = url;
             }
         }
 
         const carritoIcon = document.querySelector('.carrito');
         if (carritoIcon) {
             carritoIcon.onclick = function () {
-                window.open('InterfazCarritoCliente.html', '_blank');
+                window.location.href = "ConsultarCatalogo.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario;
             }
         }
+        buscarProducto();
     });
 </script>
 

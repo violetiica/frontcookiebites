@@ -43,8 +43,16 @@
 <script>
     const user = JSON.parse(sessionStorage.getItem('currentuser'));
 
+    let urlParams = new URLSearchParams(window.location.search);
+    let tipoDeUsuario = urlParams.get('perfil');
+    let nombreUsuario = urlParams.get('id');
     localStorage.clear();
     localStorage.removeItem('currentuser');
+
+    let botonVolver = document.getElementById("boton-volver");
+        botonVolver.addEventListener(('click'), ()=>{
+            window.location.href = "ConsultarCatalogo.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario ;
+        })
 
     if (user) {
         document.getElementById('nombre').textContent = user.nombre;
