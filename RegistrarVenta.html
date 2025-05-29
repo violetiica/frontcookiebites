@@ -90,41 +90,8 @@
                 </div>
                 <button type="submit" class="boton-enviar">Registrar Pago</button>
             </form>
-            <div class="direccion-envio">
-                <h2>Dirección de envío</h2>
-                <h3>IMPORTANTE: solo hay envíos a Caracas-Venezuela.</h3>
-                <div class="campo-form">
-                    <label for="zona">Zona de Caracas:</label>
-                    <select id="zona" name="zona" required>
-                        <option value="">Seleccione una zona</option>
-                        <option value="Chacao">Chacao</option>
-                        <option value="Baruta">Baruta</option>
-                        <option value="El Hatillo">El Hatillo</option>
-                        <option value="Sucre">Sucre</option>
-                        <option value="Libertador">Libertador</option>
-                        <option value="La Candelaria">La Candelaria</option>
-                        <option value="San Bernardino">San Bernardino</option>
-                        <option value="La Castellana">La Castellana</option>
-                        <option value="Altamira">Altamira</option>
-                        <option value="Las Mercedes">Las Mercedes</option>
-                        <option value="Los Palos Grandes">Los Palos Grandes</option>
-                        <option value="La Florida">La Florida</option>
-                        <option value="Otra">Otra</option>
-                    </select>
-                </div>
-                <div class="campo-form">
-                    <label for="detalles">Información detallada:</label>
-                    <textarea id="detalles" name="detalles" rows="3"
-                        placeholder="Apartamento, piso, punto de referencia, etc." required></textarea>
-                </div>
-            </div>
         </div>
     </div>
-    <!--
-    <div style="text-align: right; margin-top: 24px;">
-        <button type="button" class="boton-siguiente">Siguiente</button>
-    </div>
-    -->
 
     <footer>
         <p>© CookieBites</p>
@@ -152,12 +119,10 @@
         if (!valido) e.preventDefault();
     });
 
-
-
     document.querySelector('.boton-enviar').addEventListener('click', function (e) {
         e.preventDefault();
         alert('¡Hemos registrado tu pago!');
         window.location.href = 'GenerarFactura.html';
     });
 </script>
-</html >
+</html>

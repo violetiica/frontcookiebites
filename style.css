@@ -114,7 +114,7 @@ footer {
   height:20px;
 }
 
-#boton-volver{
+.boton-volver{
     background-color: #ADD8E6;
     color: black;
     padding: 12px 28px;
@@ -908,4 +908,13 @@ select:focus {
     cursor: not-allowed;       /* Cursor de no permitido */
     opacity: 0.7;              /* Un poco transparente */
     border: 1px solid #888;    /* Borde gris */
+}
+
+.direccion-envio-full {
+    max-width: 1100px;
+    margin: 32px auto 0 auto;
+    background: #fff8f0;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(184,123,75,0.08);
+    padding: 32px 28px 24px 28px;
 }
