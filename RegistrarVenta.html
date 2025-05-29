@@ -20,9 +20,8 @@
             <img src="img/carrito.png" alt="Carrito de Pedidos" class="carrito">
         </div>
     </header>
-
-    <button id="boton-volver" onclick="window.location.href='carrito.html'">Volver</button>
-
+    <button class="boton-volver" onclick="window.location.href='carrito.html'">Volver</button>
+    
     <div class="venta-container">
         <!-- Panel Izquierdo -->
         <div class="panel-izq">
@@ -100,13 +99,22 @@
 
 <script>
     document.getElementById('form-pago').addEventListener('submit', function (e) {
+        e.preventDefault();
         let valido = true;
+        const titular = document.getElementById('titular').value;
+        const banco = document.getElementById('banco').value;
         const celular = document.getElementById('celular').value;
+        const cedula = document.getElementById('cedula').value;
         const referencia = document.getElementById('referencia').value;
         const errorCel = document.getElementById('error-celular');
         const errorRef = document.getElementById('error-referencia');
         errorCel.textContent = "";
         errorRef.textContent = "";
+
+        if (!titular || !banco || !celular || !cedula || !referencia) {
+            alert("Por favor, complete todos los campos.");
+            valido = false;
+        }
 
         if (!/^\d{11}$/.test(celular)) {
             errorCel.textContent = "El número debe tener exactamente 11 dígitos.";
@@ -116,13 +124,12 @@
             errorRef.textContent = "La referencia debe tener exactamente 8 dígitos.";
             valido = false;
         }
-        if (!valido) e.preventDefault();
-    });
 
-    document.querySelector('.boton-enviar').addEventListener('click', function (e) {
-        e.preventDefault();
-        alert('¡Hemos registrado tu pago!');
-        window.location.href = 'GenerarFactura.html';
+        if (valido) {
+            alert('¡Hemos registrado tu pago!');
+            window.location.href = 'GenerarFactura.html';
+        }
     });
 </script>
+
 </html>
