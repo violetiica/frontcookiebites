@@ -160,6 +160,15 @@
     }
   }
 
+  async function buscarLista(){
+    console.log("Busando...");
+    let aux;
+    fetch('http://localhost:8080/productos').then((response) => response.json())
+  .then((json) => llenarListadoProductos(json));
+
+    //return JSON.parse(pediod);
+  }
+
     // Acción al hacer clic (puedes cambiar la URL)
     // tarjetaAgregar.onclick = function() {
     //   window.open('InterfazAdmiNuevaGalleta.html', '_blank');
@@ -184,7 +193,8 @@
     };
   });
 
-  llenarListadoProductos(listaDePrueba);
+  buscarLista();
+  
   agregarBotonAgregar();
 </script>
 
