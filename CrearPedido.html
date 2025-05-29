@@ -12,14 +12,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&display=swap" rel="stylesheet">
 </head>
 
-    <header>
-        <img id="logo" src="img/CookieBitesSinFondo.png" alt="Logo CookieBites" class="logo">
-        <div class="icons">
-            <img src="img/edit.png" alt="Crear cuenta" class="perfil-nuevo">
-            <img src="img/carrito.png" alt="Carrito de Pedidos" class="carrito">
-        </div>
-    </header>
-    <button class="boton-volver" onclick="window.location.href='interfazvisitante.html'">Volver</button>
+<header>
+    <img id="logo" src="img/CookieBitesSinFondo.png" alt="Logo CookieBites" class="logo">
+    <div class="icons">
+        <img src="img/edit.png" alt="Crear cuenta" class="perfil-nuevo">
+        <img src="img/carrito.png" alt="Carrito de Pedidos" class="carrito">
+    </div>
+</header>
+<button class="boton-volver" onclick="window.location.href='Carrito.html'">Volver</button>
+
 <body>
     <div class="venta-container">
         <!-- Panel Izquierdo -->
@@ -35,7 +36,11 @@
                 </div>
                 <div class="campo-form">
                     <label for="direccion">Dirección de entrega:</label>
-                    <textarea id="direccion" name="direccion" rows="3" placeholder="Dirección completa" required></textarea>
+                    <textarea id="direccion" name="direccion" rows="3" placeholder="Dirección completa"
+                        required></textarea>
+                </div>
+                <div style="text-align: right; margin-top: 24px;">
+                    <button type="button" class="boton-siguiente">Siguiente</button>
                 </div>
             </form>
         </div>
@@ -64,11 +69,73 @@
             </div>
         </div>
     </div>
-      <div style="text-align: right; margin-top: 24px;">
-        <button type="button" class="boton-siguiente">Siguiente</button>
-    </div>
+    
     <footer>
         <p>© CookieBites</p>
     </footer>
-</body> 
+</body>
+
+<script>
+    function validarFormulario() {
+        const cliente = document.getElementById('cliente').value.trim();
+        const fecha = document.getElementById('fecha').value;
+        const direccion = document.getElementById('direccion').value.trim();
+
+        if (!cliente || !fecha || !direccion) {
+            alert('Por favor, completa todos los campos.');
+            return false;
+        }
+
+        const hoy = new Date();
+        hoy.setHours(0,0,0,0); // Ignora la hora
+        const fechaSeleccionada = new Date(fecha);
+
+        if (fechaSeleccionada < hoy) {
+            alert('Por favor, selecciona una fecha de entrega válida (hoy o en el futuro).');
+        return false;
+        }
+
+        return true;
+    }
+
+    const pedido = JSON.parse(sessionStorage.getItem('pedidodelcarrito'));
+
+    if (pedido){
+        
+    }
+
+    document.querySelector('.boton-siguiente').addEventListener('click', function () {
+    if (!validarFormulario()) return;
+
+    // Tomar productos del DOM
+    const productos = [];
+    document.querySelectorAll('#lista-productos .item-carrito').forEach(item => {
+        const nombre = item.querySelector('strong').textContent.trim();
+        const precioTexto = item.querySelector('.precio-carrito').textContent;
+        // Ejemplo de formato: "2 x $2.50 = $5.00"
+        const match = precioTexto.match(/(\d+)\s*x\s*\$(\d+(\.\d+)?)/);
+        const cantidad = match ? parseInt(match[1]) : 1;
+        const precio = match ? parseFloat(match[2]) : 0;
+        productos.push({ nombre, cantidad, precio });
+    });
+
+    // Calcular total
+    const total = productos.reduce((sum, p) => sum + (p.cantidad * p.precio), 0);
+
+    // Construir objeto pedido
+    const pedido = {
+        cliente: document.getElementById('cliente').value,
+        fecha: document.getElementById('fecha').value,
+        direccion: document.getElementById('direccion').value,
+        productos,
+        total
+    };
+
+    // Guardar en sessionStorage y redirigir
+    sessionStorage.setItem('pedido', JSON.stringify(pedido));
+    window.location.href = 'ConfirmarPedido.html';
+});
+
+</script>
+
 </html>

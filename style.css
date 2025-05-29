@@ -118,30 +118,30 @@ footer {
     background-color: #ADD8E6;
     color: black;
     padding: 12px 28px;
-    border-radius: 25px;
     font-size: 13px;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-    transition: background 0.3s, color 0.3s, transform 0.2s;
+    box-shadow: 0 0px 5px rgba(0,0,0,0.10);
     margin: 5px;
+    border:none;
+    border-radius: 8px;
     display: block;
 }
 
-#login-form {
+.login-form {
+    display: flex;
+    flex-direction: column;
     background: #fff8f0;
     border-radius: 16px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
     max-width: 350px;
     margin: 40px auto 24px auto;
     padding: 32px 28px;
-    display: flex;
-    flex-direction: column;
     gap: 12px;
     font-family: 'Dongle', Arial, sans-serif;
 }
 
-#login-form h2 {
+.login-form h2 {
     font-size: 2.5rem;
     color: #a67c52;
     text-align: center;
@@ -157,13 +157,13 @@ footer {
     box-shadow: 0 2px 8px rgba(229, 208, 177, 0.15);
 }
 
-#login-form label {
+.login-form label {
     font-size: 1.2rem;
     color: #7c4a21;
     margin-bottom: 2px;
 }
 
-#login-form input {
+.login-form input {
     padding: 8px 10px;
     border: 1px solid #e0c3a1;
     border-radius: 8px;
@@ -173,12 +173,12 @@ footer {
     transition: border 0.2s;
 }
 
-#login-form input:focus {
+.login-form input:focus {
     border: 1.5px solid #b87b4b;
     outline: none;
 }
 
-#login-form button[type="submit"] {
+.login-form button[type="submit"] {
     background: #b87b4b;
     color: #fff;
     border: none;
@@ -562,12 +562,13 @@ main #contenedor-carrito {
     padding: 24px 22px;
     margin-bottom: 0;
 }
-.resumen-box h3 {
+.resumen-box h3, .pago-box h3 {
     color: #b87b4b;
     font-family: 'Dongle', Arial, sans-serif;
-    margin-bottom: 18px;
+    margin-bottom: 0px;
     font-size: 2em;
 }
+
 .resumen-item {
     display: flex;
     justify-content: space-between;
@@ -609,6 +610,11 @@ main #contenedor-carrito {
     flex-direction: column;
     gap: 4px;
 }
+
+#zona{
+    margin-bottom: 10px;
+}
+
 label {
     color: #b87b4b;
     font-size: 1.08em;
@@ -663,7 +669,7 @@ input:focus, select:focus, textarea:focus {
     margin-bottom: 6px;
 }
 
-.boton-siguiente {
+.boton-siguiente,#boton-crearpedido {
     background: #ADD8E6;
     color: black;
     border: none;
@@ -675,7 +681,7 @@ input:focus, select:focus, textarea:focus {
     transition: background 0.2s;
     margin-bottom: 10px;
 }
-.boton-siguiente:hover {
+.boton-siguiente:hover,#boton-crearpedido:hover {
     background: #1769aa;
 }
 
@@ -835,4 +841,71 @@ select:focus {
 .form-pago textarea:focus {
     border-color: #b87b4b;
     outline: none;
+}
+
+.resumen-compra strong{
+    font-family: dongle, sans-serif;
+    font-size: 30px;
+    color:#b87329;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.resumen-compra p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color:rgb(78, 44, 7);
+}
+
+.contenedor-resumen{
+    display: flex;
+    flex-direction: column;
+    padding:25px;
+
+}
+
+.contenedor-resumen > ul li{
+    list-style: circle;
+    margin-left: 24px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.contenedor-resumen h2 {
+    font-size:20px;
+}
+
+.contenedor-resumen > .button.button1{
+    margin-left:0;
+    align-self: center;
+}
+
+.contenedor-pdf {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.botonesfact{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contenedor-pdf> .button.button1{
+    margin-left:0;
+    align-self: center;
+}
+
+#pdfPreview {
+    width: 50%;
+    height: 500px; /* Ajusta la altura según tus necesidades */
+    border: 1px solid #ccc;     
+}
+
+#botondownload:disabled {
+    background-color: #b0b0b0; /* Gris claro */
+    color: #fff;               /* Texto blanco */
+    cursor: not-allowed;       /* Cursor de no permitido */
+    opacity: 0.7;              /* Un poco transparente */
+    border: 1px solid #888;    /* Borde gris */
 }

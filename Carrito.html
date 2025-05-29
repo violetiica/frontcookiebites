@@ -21,11 +21,13 @@
         </div>
     </header>
 
-    <button id="boton-volver">Volver</button>
-
     <main>
+        <button class="boton-volver" onclick="window.location.href='ConsultarCatalogo.html'">Volver</button>
         <h2>Carrito</h2>
         <div id="contenedor-carrito"></div>
+        <div style="text-align: right; margin-top: 24px;">
+            <button id="boton-crearpedido">Crear Pedido</button>
+        </div>
     </main>
 
     <footer>
@@ -43,10 +45,7 @@
         window.location.href = "ConsultarPerfil.html?id=" + ""
       }
     }
-    let botonVolver = document.getElementById("boton-volver");
-    botonVolver.addEventListener(('click'), ()=>{
-      window.location.href = "ConsultarCatalogo.html?id=";
-    })
+
     let carrito = [{
       Producto:{
       "nombre": "Galleta con chispas",
@@ -65,6 +64,7 @@
       cant: 99,
       total: 99
       }];
+
     const contenedor = document.getElementById('contenedor-carrito');
 
     if (carrito.length === 0) {
@@ -84,6 +84,32 @@
       `;
       contenedor.appendChild(item);
     });
+  });
+  
+  document.querySelector('#boton-crearpedido').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    //if (tipoDeUsuario == "visitante"){
+      //alert('Por favor, inicia sesión para crear un pedido.');
+      //window.location.href = 'LogIn.html';
+      //return;
+    //}
+    //else{
+      if (document.querySelectorAll('.item-carrito').length === 0) {
+        alert('El carrito está vacío. Por favor, agrega productos antes de crear un pedido.');
+        return;
+      }
+
+      const pedido = {
+        carrito: []
+      };
+
+      sessionStorage.setItem('pedidodelcarrito', JSON.stringify(pedido));
+      console.log('Pedido creado:', pedido);
+
+      window.location.href = 'CrearPedido.html';
+
+    //}
   });
 </script>
 
