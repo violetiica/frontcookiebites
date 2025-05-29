@@ -21,7 +21,7 @@
         </div>
     </header>
 
-    <button class="boton-volver" onclick="window.location.href='ConsultarCatalogo.html'">Volver</button>
+    <button id="boton-volver" >Volver</button>
 
     <main>
         <h2>PERFIL</h2>
@@ -41,7 +41,7 @@
 </body>
 
 <script>
-    const user = JSON.parse(sessionStorage.getItem('currentuser'));
+    // const user = JSON.parse(sessionStorage.getItem('currentuser'));
 
     let urlParams = new URLSearchParams(window.location.search);
     let tipoDeUsuario = urlParams.get('perfil');
@@ -54,25 +54,42 @@
             window.location.href = "ConsultarCatalogo.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario ;
         })
 
-    if (user) {
-        document.getElementById('nombre').textContent = user.nombre;
-        document.getElementById('nombreusuario').textContent = user.usuario;
-        document.getElementById('emailuser').textContent = user.correo;
-        document.getElementById('passworduser').textContent = user.contrasena;
-    }
+    // if (user) {
+    //     document.getElementById('nombre').textContent = user.nombre;
+    //     document.getElementById('nombreusuario').textContent = user.usuario;
+    //     document.getElementById('emailuser').textContent = user.correo;
+    //     document.getElementById('passworduser').textContent = user.contrasena;
+    // }
 
     // Mostrar contraseña al pasar el mouse
-    const passwordSpan = document.getElementById('passworduser');
-    const realPassword = user.contrasena;
-    passwordSpan.textContent = '******';
+    
 
-    passwordSpan.addEventListener('mouseenter', function () {
-        passwordSpan.textContent = realPassword;
-    });
-    passwordSpan.addEventListener('mouseleave', function () {
-        passwordSpan.textContent = '******';
-    });
+    async function buscarUsuario(nombre, clave){
+        console.log("Busando...");
+        let aux;
+        fetch('http://localhost:8080/perfil/'+ nombreUsuario).then((response) => {
 
+                response.json().then((json) => {
+                     document.getElementById('nombre').textContent = json.nombre;
+                    document.getElementById('nombreusuario').textContent = json.nombreUsuario;
+                    document.getElementById('emailuser').textContent = json.correo;
+                    document.getElementById('passworduser').textContent = json.contrasena;
+
+                    const passwordSpan = document.getElementById('passworduser');
+                    const realPassword = json.contrasena;
+                    passwordSpan.textContent = '******';
+
+                    passwordSpan.addEventListener('mouseenter', function () {
+                        passwordSpan.textContent = realPassword;
+                    });
+                    passwordSpan.addEventListener('mouseleave', function () {
+                        passwordSpan.textContent = '******';
+                    });
+                })
+            }
+
+        )}
+        buscarUsuario();
 
 </script>
 

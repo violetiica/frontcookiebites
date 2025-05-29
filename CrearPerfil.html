@@ -21,7 +21,7 @@
         </div>
     </header>
 
-    <button class="boton-volver" onclick="window.location.href='ConsultarCatalogo.html'">Volver</button>
+    <button id="boton-volver">Volver</button>
     <form class="login-form">
         <h2>¡Registrate!</h2>
         <label for="nombre">Nombre:</label>
@@ -42,7 +42,7 @@
         <span id="error-contrasena" style="color: #b87b4b; font-size: 1rem; display: none;">Las contraseñas no
             coinciden.</span>
 
-        <button type="submit">Enviar</button>
+        <button type="submit" id="formita">Enviar</button>
 
         <div class="registro-link" style="text-align:center; margin-top:10px;">
                 ¿Ya estás registrado?
@@ -58,14 +58,21 @@
 </body>
 
 <script>
-    const form = document.getElementById('login-form');
+    const form = document.getElementById('formita');
     const name = document.getElementById('nombre');
     const username = document.getElementById('usuario');
     const email = document.getElementById('correo');
     const password = document.getElementById('contrasena');
     const confirmPassword = document.getElementById('confirmar');
 
-    form.addEventListener('submit', function (event) {
+      let urlParams = new URLSearchParams(window.location.search);
+        let tipoDeUsuario = urlParams.get('perfil');
+        let nombreUsuario = urlParams.get('id');
+        let listaCatalogo = document.getElementById("catalogo");
+    document.getElementById("boton-volver").addEventListener(('click'), ()=>{
+      window.location.href = "ConsultarCatalogo.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario;
+    })
+    form.addEventListener('click', function (event) {
         event.preventDefault();
 
         if (password.value !== confirmPassword.value) {

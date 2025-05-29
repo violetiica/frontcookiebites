@@ -36,11 +36,11 @@
         <label for="precio">Precio ($):</label>
         <input type="number" id="precio" name="precio" step="0.01" min="0" required>
     </div>
-    <div class="campo-form">
+    <!-- <div class="campo-form">
         <label for="imagen">Imagen:</label>
         <input type="file" id="imagen" name="imagen" accept="image/*" required>
-    </div>
-    <button type="submit" class="boton-agregar">Agregar Producto</button>
+    </div> -->
+    <button type="submit" class="boton-agregar" id="agregar">Agregar Producto</button>
   </form>
 
 
@@ -55,6 +55,30 @@
         let tipoDeUsuario = urlParams.get('perfil');
         let nombreUsuario = urlParams.get('id');
         
+        async function CrearProducto(nombre,precio, ingredientes){
+        fetch('http://localhost:8080/productos/crear', {
+        method: "POST",
+        body: JSON.stringify(JSON.stringify({
+            nombre: nombre,
+            precio: usuario,
+            ingredientes: rol,
+        })),
+        headers: {
+        "Content-type": "application/json; charset=UTF-8"
+        }
+    }).then(() => {alert('¡Registro exitoso!') ; window.location.href = 'ConsultarCatalogo.html?perfil='+ tipoDeUsuario + '&id=' + nombreUsuario});
+        
+    }
+
+
+        document.getElementById("agregar").addEventListener(('click'), ()=>{
+            console.log("pip");
+            let nombre = document.getElementById("nombre").value;
+            let precio = document.getElementById("precio").value;
+            let ingredientes = document.getElementById("ingredientes").value;
+            // CrearProducto(nombre, precio, ingredientes.split(','));
+
+        })
 
         let botonVolver = document.getElementById("boton-volver");
         botonVolver.addEventListener(('click'), ()=>{

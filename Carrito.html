@@ -22,7 +22,7 @@
     </header>
 
     <main>
-        <button class="boton-volver" onclick="window.location.href='ConsultarCatalogo.html'">Volver</button>
+        <button id="boton-volver">Volver</button>
         <h2>Carrito</h2>
         <div id="contenedor-carrito"></div>
         <div style="text-align: right; margin-top: 24px;">
@@ -50,8 +50,7 @@
     let urlParams = new URLSearchParams(window.location.search);
     let tipoDeUsuario = urlParams.get('perfil');
     let nombreUsuario = urlParams.get('id');
-    let botonVolver = document.getElementById("boton-volver");
-    botonVolver.addEventListener(('click'), ()=>{
+    document.getElementById("boton-volver").addEventListener(('click'), ()=>{
       window.location.href = "ConsultarCatalogo.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario;
     })
     // let carrito = [{
@@ -93,8 +92,8 @@
       item.innerHTML = `
         <img src="" alt="${producto.producto.nombre}" width="60">
         <span><strong>${producto.producto.precio}</strong></span>
-        <span class="precio-carrito">${producto.cant} unid</span>
-        <span class="precio-carrito">$${producto.cant*producto.producto.precio}</span>
+        <span class="precio-carrito">${producto.cantidad} unid</span>
+        <span class="precio-carrito">$${producto.cantidad*producto.producto.precio}</span>
       `;
       contenedor.appendChild(item);
     });
@@ -112,11 +111,9 @@
         }
     buscarCarrito();
 
-  });
-  
-  document.querySelector('#boton-crearpedido').addEventListener('click', function(e) {
+    document.querySelector('#boton-crearpedido').addEventListener('click', function(e) {
     e.preventDefault();
-
+    console.log(tipoDeUsuario);
     //if (tipoDeUsuario == "visitante"){
       //alert('Por favor, inicia sesión para crear un pedido.');
       //window.location.href = 'LogIn.html';
@@ -127,18 +124,23 @@
         alert('El carrito está vacío. Por favor, agrega productos antes de crear un pedido.');
         return;
       }
+      window.location.href = 'CrearPedido.html?perfil='+ tipoDeUsuario +  "&id=" + nombreUsuario;
 
       const pedido = {
         carrito: []
       };
 
-      sessionStorage.setItem('pedidodelcarrito', JSON.stringify(pedido));
+      
       console.log('Pedido creado:', pedido);
 
-      window.location.href = 'CrearPedido.html';
+      window.location.href = 'CrearPedido.html?perfil='+ tipoDeUsuario +  "&id=" + nombreUsuario;
 
     //}
   });
+
+  });
+  
+  
 </script>
 
 </html>

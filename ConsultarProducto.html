@@ -21,7 +21,7 @@
         </div>
     </header>
     <main>
-        <button class="boton-volver" onclick="window.location.href='ConsultarCatalogo.html'">Volver</button>
+        <button id="boton-volver" >Volver</button>
         <div class="infoproducto">
             <div class="descprod" id="fotoproducto">
                 <img id="productImage" alt="foto de producto" />
@@ -68,8 +68,7 @@
         let precioUnitario = NaN;
 
         document.querySelector(".usuario").src = ((tipoDeUsuario =="cliente")||(tipoDeUsuario =="admin"))?  "img/usuario.png":"img/edit.png";
-        let botonVolver = document.getElementById("boton-volver");
-        botonVolver.addEventListener(('click'), ()=>{
+        document.getElementById("boton-volver").addEventListener(('click'), ()=>{
             window.location.href = "ConsultarCatalogo.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario ;
         })
 
@@ -136,7 +135,7 @@
         method: "POST",
         body: JSON.stringify({
             producto : productoMostrado,
-            cant: cant
+            cantidad: cant
         }),
     headers: {
     "Content-type": "application/json; charset=UTF-8"

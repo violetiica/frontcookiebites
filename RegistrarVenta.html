@@ -20,7 +20,7 @@
             <img src="img/carrito.png" alt="Carrito de Pedidos" class="carrito">
         </div>
     </header>
-    <button class="boton-volver" onclick="window.location.href='carrito.html'">Volver</button>
+    <button id="boton-volver" >Volver</button>
     
     <div class="venta-container">
         <!-- Panel Izquierdo -->
@@ -98,6 +98,13 @@
 </body>
 
 <script>
+
+    let urlParams = new URLSearchParams(window.location.search);
+    let tipoDeUsuario = urlParams.get('perfil');
+    let nombreUsuario = urlParams.get('id');
+    document.getElementById("boton-volver").addEventListener(('click'), ()=>{
+      window.location.href = "Carrito.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario;
+    })
     document.getElementById('form-pago').addEventListener('submit', function (e) {
         e.preventDefault();
         let valido = true;

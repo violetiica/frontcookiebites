@@ -24,7 +24,7 @@
         </div>
     </header>
     <main>
-        <button class="boton-volver" onclick="window.location.href='ConsultarCatalogo.html'">Volver</button>
+        <button id="boton-volver" >Volver</button>
         <h2>Factura Generada</h2>
 
         <div class="contenedor-pdf">
@@ -34,6 +34,14 @@
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
         <script>
+              let urlParams = new URLSearchParams(window.location.search);
+            let tipoDeUsuario = urlParams.get('perfil');
+            let nombreUsuario = urlParams.get('id');
+            let listaCatalogo = document.getElementById("catalogo");
+            let botonVolver = document.getElementById("boton-volver");
+            botonVolver.addEventListener(('click'), ()=>{
+                window.location.href = "ConsultarCatalogo.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario ;
+        })
             const carrito = document.querySelector('.carrito');
             carrito.onclick = function () {
                 window.location.href = "Carrito.html?id=" + "";
