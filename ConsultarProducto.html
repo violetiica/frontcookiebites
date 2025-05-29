@@ -46,7 +46,7 @@
                     <input type="number" id="cantidadGalletas" value="1" min="1" style="width:50px; text-align:center; font-size:1.2em;">
                     <button type="button" id="sumarCantidad" style="font-size:1.5em; width:32px; height:32px;">+</button>
                 </div>
-                <button class="button button1"><strong>Agregar al carrito</strong></button>
+                <button class="button button1" id="boton-agrergar"><strong>Agregar al carrito</strong></button>
             </div>
         </div>
     </main>
@@ -57,11 +57,13 @@
 
 
 <script>
+    // brave.exe --user-data-dir="C://Chrome dev session" --disable-web-security "enter url here"
     document.addEventListener('DOMContentLoaded', function () {
         let urlParams = new URLSearchParams(window.location.search);
         let tipoDeUsuario = urlParams.get('perfil');
         let nombreUsuario = urlParams.get('id');
         let nombreProducto = urlParams.get('prod');
+        let productoMostrado;
         // const storedProductJSON = sessionStorage.getItem('currentProduct');
         let precioUnitario = NaN;
 
@@ -72,9 +74,10 @@
         })
 
         function insertarDatos(storedProductJSON){
+            console.log("a");
             if (storedProductJSON) {
             const product = storedProductJSON;
-
+            productoMostrado = storedProductJSON;
             const productNameElement = document.getElementById('nombredelproducto');
             const productPriceElement = document.getElementById('preciodelproducto');
             const productIngredientsList = document.getElementById('ingredientesdelproducto');
@@ -114,6 +117,7 @@
             }
             console.warn("No product data found in sessionStorage for InterfazInfoProducto.html.");
         }
+        console.log("b");
         }
         
 
@@ -126,6 +130,19 @@
 
             //return JSON.parse(pediod);
         }
+
+        async function agregarCarrito(cant){
+        fetch('http://localhost:8080/carrito/agregar/' + nombreUsuario, {
+        method: "POST",
+        body: JSON.stringify({
+            producto : productoMostrado,
+            cant: cant
+        }),
+    headers: {
+    "Content-type": "application/json; charset=UTF-8"
+     }
+    }).then(() => { window.location.href = 'Carrito.html?perfil='+ tipoDeUsuario + '&id=' + nombreUsuario });}
+
 
         // Selector de cantidad y actualización de precio
         const inputCantidad = document.getElementById('cantidadGalletas');
@@ -164,25 +181,25 @@
         });
 
         // Agregar al carrito
-        const btnAgregar = document.querySelector('.button.button1');
-        btnAgregar.addEventListener('click', function() {
-            const nombre = document.getElementById('nombredelproducto').textContent;
+        document.getElementById("boton-agrergar").addEventListener(('click'), ()=> {
+            console.log("c");
+            // const nombre = document.getElementById('nombredelproducto').textContent;
             const cantidad = parseInt(document.getElementById('cantidadGalletas').value);
-            const precioUnitarioActual = precioUnitario;
-            const imagen = document.getElementById('productImage').src;
+            // const precioUnitarioActual = precioUnitario;
+            // const imagen = document.getElementById('productImage').src;
 
-            const productoCarrito = {
-                nombre: nombre,
-                cantidad: cantidad,
-                precioUnitario: precioUnitarioActual,
-                imagen: imagen
-            };
+            // const productoCarrito = {
+            //     nombre: nombre,
+            //     cantidad: cantidad,
+            //     precioUnitario: precioUnitarioActual,
+            //     imagen: imagen
+            // };
 
-            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-            carrito.push(productoCarrito);
-            localStorage.setItem('carrito', JSON.stringify(carrito));
-
-            window.location.href = "Carrito.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario ;
+            // let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            // carrito.push(productoCarrito);
+            // localStorage.setItem('carrito', JSON.stringify(carrito));
+            console.log(cantidad);
+            agregarCarrito(cantidad);
         });
 
         // Iconos de usuario y carrito
@@ -200,8 +217,11 @@
                 window.location.href = "ConsultarCatalogo.html?perfil=" + tipoDeUsuario +  "&id=" + nombreUsuario;
             }
         }
-        buscarProducto();
-    });
+        buscarProducto(); 
+    }
+    
+    
+    );
 </script>
 
 </html>
